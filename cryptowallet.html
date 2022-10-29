@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles/crypto.css">
+
+    <title>Sean Layton Project</title>
+</head>
+  <body> 
+    <h1 id="pageTitle">Social A-Music</h1>
+    <!-- <h2>by AtlasMusic.org</h2> -->
+    <div class="map circle-graphic">
+        <div class="layer ellipses">
+          <div class="ellipsis"></div>
+          <div class="ellipsis"></div>
+          <div class="ellipsis"></div>
+          <div class="circle is-cover"></div>
+        </div>
+        <div class="layer">
+          <div class="circle is-second"></div>
+        </div>
+        <div class="layer">
+          <div class="circle is-third"></div>
+        </div>
+        <div class="layer">
+          <div class="module">
+            <div class="circle node" data-info="{&quot;title&quot;:&quot;Sean&quot;,&quot;icon&quot;:&quot;gamepad&quot;,&quot;description&quot;:&quot;Hi Sam, would you like to play a game? \n    &quot;}" data-index="1">
+              <div class="subtitle">Sean</div>
+              <h4 class="title is-4">gaming</h4>
+            </div>
+            <div class="leaf"></div>
+          </div>
+          <div class="module">
+            <div class="circle node" data-info="{&quot;title&quot;:&quot;Thomas&quot;,&quot;icon&quot;:&quot;tv-retro&quot;,&quot;description&quot;:&quot;Hi Sam! I wanted to share with you what I found out today. Check out this article! \n    &quot;}" data-index="2">
+              <div class="subtitle">Thomas</div>
+              <h4 class="title is-4">Listening</h4>
+            </div>
+            <div class="leaf"></div>
+          </div>
+          <div class="module">
+            <div class="circle node" data-info="{&quot;title&quot;:&quot;Melanie&quot;,&quot;icon&quot;:&quot;broadcast-tower&quot;,&quot;description&quot;:&quot;Listen to this song it's so good! \n    &quot;}" data-index="3">
+              <div class="subtitle">Melanie</div>
+              <h4 class="title is-4">Listening</h4>
+            </div>
+            <div class="leaf"></div>
+          </div>
+          <div class="module">
+            <div class="circle node" data-info="{&quot;title&quot;:&quot;Ron&quot;,&quot;icon&quot;:&quot;comments&quot;,&quot;description&quot;:&quot;Sam, would you be able to meet today at 5:00? I have something important to share with you.\n    &quot;}" data-index="4">
+              <div class="subtitle">Ron</div>
+              <h4 class="title is-4">Listening</h4>
+            </div>
+            <div class="leaf"></div>
+          </div>
+          <div class="module">
+            <div class="circle node" data-info="{&quot;title&quot;:&quot;Jose&quot;,&quot;icon&quot;:&quot;users&quot;,&quot;description&quot;:&quot;Sam! Was hoping to meet up with you very soon. I want to show you an awesome place I found just outside of town. \n    &quot;}" data-index="5">
+              <div class="subtitle">Jose</div>
+              <h4 class="title is-4">Listening</h4>
+            </div>
+            <div class="leaf"></div>
+          </div>
+          <div class="module">
+            <div class="circle node" data-info="{&quot;title&quot;:&quot;Friend&quot;,&quot;icon&quot;:&quot;coins&quot;,&quot;description&quot;:&quot;This music is so good! I can't stop listening! \n    &quot;}" data-index="6">
+              <div class="subtitle">[Your Friend]</div>
+              <h4 class="title is-4">Listening</h4>
+            </div>
+            <div class="leaf"></div>
+          </div>
+        </div>
+        <div class="layer">
+          <div class="circle node is-main" data-info="{&quot;title&quot;:&quot;INNOU ID&quot;,&quot;subtitle&quot;:&quot;My Profile&quot;,&quot;icon&quot;:&quot;wallet&quot;,&quot;main&quot;:true,&quot;description&quot;:&quot;Share something cool! \n    &quot;}" data-index="0">
+            <h2 class="title is-2">Sam</h2>
+            <div class="subtitle is-strong">Atlas Music</div>
+          </div>
+        </div>
+      </div>
+      <div class="modal" id="introModal">
+        <div class="modal-background" id="introModalBackground"></div>
+        <div class="modal-card">
+          <header class="modal-card-head">
+            <div class="modal-card-title"><span>Bubble </span><span class="is-strong" id="introModalTitle"></span></div>
+            <button class="delete" id="introModalClose" aria-label="close"></button>
+          </header>
+          <section class="modal-card-body">
+            <div class="columns">
+              <div class="column">
+                <p id="introModalDescription"></p>
+              </div>
+              <div class="column is-flex"><i id="introModalIcon"></i></div>
+            </div>
+          </section>
+          <footer class="modal-card-foot has-content-centered">
+            <button class="button" id="introModalPrev"><i class="fas fa-chevron-left"></i></button>
+            <button class="button" id="introModalNext"><i class="fas fa-chevron-right"></i></button>
+          </footer>
+        </div>
+      </div>
+    <script src="/scripts/app.js"></script>
+  </body>
+</html>

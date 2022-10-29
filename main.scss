@@ -1,0 +1,327 @@
+// Bulma
+@import url('https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css');
+
+// Font awesome
+@import url('https://innou.io/assets/css/bundle.css');
+
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Quicksand:400,700&display=swap');
+
+// Images
+$leaf-url: 'https://making-the-web.com/sites/default/files/clipart/156536/green-leaf-icon-156536-2289922.png';
+$leaf-pattern-url: 'https://walls4u.co.uk/app/uploads/2018/10/AdobeStock_184585340.jpg';
+$maze-url: 'http://innou.io/beta/assets/images/maze-white.png';
+
+// Palette
+$color-bg:            #062133;
+$color-block-bg:      lighten($color-bg, 5);
+$color-accent:        #880621;
+$color-text:          #ffffff;
+$color-primary:       #94AD42;
+$color-secondary:     #05BBC1;
+
+// Settings
+$animation-duration:  48s;
+$circle-radius:       6em;
+$dot-size:            8px;
+
+body, html {
+  display: block;
+  overflow: hidden;
+  font-family: Quicksand;
+  background: $color-bg;
+}
+
+.has-content-centered {justify-content: center;}
+.has-content-right {justify-content: flex-end;}
+
+.is-flex {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.is-round {
+  border-radius: 50%;
+}
+
+.is-strong {
+  font-weight: 700;
+}
+
+.title, .subtitle {
+  text-transform: uppercase;
+  color: $color-text;
+  
+  &.is-strong {
+    font-weight: 700;
+    color: $color-primary;
+  }
+}
+
+.circle-graphic {
+  pointer-events: none;
+  
+  &.pause {
+    .module,
+    .node {
+      animation-play-state: paused;
+    }
+  }
+}
+
+.layer {
+  @extend .is-flex;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
+
+.module {
+  position: absolute;
+  display: flex;
+  justify-content: flex-end;
+  width: $circle-radius * 5;
+  left: calc(50% - #{$circle-radius});
+  top: calc(50% - #{$circle-radius});
+  transform-origin: $circle-radius $circle-radius;
+  animation: spin $animation-duration linear infinite;
+  transition: transform .3s ease-out;
+  
+  &:before {
+    content: '';
+    display: block;
+    width: calc(100% - #{$circle-radius});
+    position: absolute;
+    border-bottom: dotted $dot-size $color-secondary;
+    top: 50%;
+    left: $circle-radius;
+    margin-top: -$dot-size/2;
+  }
+  
+  &.pause .leaf {
+    opacity: 1;
+  }
+  
+  .circle {
+    animation: spin $animation-duration linear infinite reverse;
+    pointer-events: all;
+    cursor: pointer;
+    transition: background .2s ease-out;
+    
+    &.pause {
+      animation-play-state: paused;
+    }
+    
+    &:hover {
+      background: $color-text;
+      border-color: $color-text;
+      box-shadow: 0px 10px 15px $color-bg;
+        
+      .title,
+      .subtitle {
+        color: $color-primary;
+      }
+    }
+  }
+  
+  @for $a from 1 to 7 {
+    &:nth-child(#{$a}) {
+      $b: $a*8;
+      animation-delay: -#{$b}s;
+      
+      .circle {
+        animation-delay: -#{$b}s;
+      }
+    }
+  }
+}
+
+.circle {
+  @extend .is-flex;
+  width: $circle-radius * 2;
+  height: $circle-radius * 2;
+  border-radius: 50%;
+  position: relative;
+  border: solid 3px $color-primary;
+  background: darken($color-bg, 2);
+
+  &.is-main {
+    background-color: rgba(darken($color-bg, 1), .95);
+    border-width: 15px;
+    width: $circle-radius * 2.75;
+    height: $circle-radius * 2.75;
+    overflow: hidden;
+    
+    pointer-events: all;
+    cursor: pointer;
+    transition: background .2s ease-out, border .2s ease-out;
+    
+    &:before {
+      content: '';
+      background: url($maze-url) center;
+      background-size: 50%;
+      position: absolute;
+      animation: spin $animation-duration linear reverse infinite;
+      width: 100%;
+      height: 100%;
+      opacity: .25;
+      z-index: 1;
+    }
+    
+    .title,
+    .subtitle {
+      position: relative;
+      z-index: 2;
+    }
+    
+    .subtitle {
+      margin-top: -1em;
+    }
+    
+    &:hover {
+      background-color: $color-text;
+      border-color: $color-text;
+      
+      .title,
+      .subtitle {
+        color: $color-primary;
+      }
+    }
+  }
+  
+  &.is-second {
+    background: none;
+    border: dotted 1px $color-secondary;
+    width: $circle-radius * 6;
+    height: $circle-radius * 6;
+  }
+  
+  &.is-third {
+    background: none;
+    border: dashed 5px darken($color-text, 60);
+    width: $circle-radius * 7;
+    height: $circle-radius * 7;
+    transition: border-color .2s ease-out;
+    animation:
+      spin
+      $animation-duration*4
+      linear
+      infinite
+      reverse;
+    
+    .pause & {
+      border-color: $color-accent;
+    }
+  }
+}
+
+.leaf {
+  position: absolute;
+  width: 3em;
+  height: 3em;
+  background: url($leaf-url) no-repeat center;
+  background-size: contain;
+  transform: rotate(40deg);
+  top: 4em;
+  right: -4.5em;
+  opacity: .3;
+}
+
+.ellipses {
+  transform: rotate(30deg);
+  
+  .ellipsis {
+    @extend .is-round;
+    background: url($leaf-pattern-url);
+    position: absolute;
+    width: $circle-radius * 8;
+    height: $circle-radius * 4;
+    border: solid 2px $color-primary;
+    opacity: .25;
+
+    @for $a from 1 to 4 {
+      &:nth-child(#{$a}) {
+        $b: $a*8;
+        animation: spin linear infinite;
+        animation-duration: $animation-duration - $a;
+        animation-delay: -#{$b}s;
+      }
+    }
+  }
+  
+  .circle.is-cover {
+    position: absolute;
+    background: rgba($color-bg, .9);
+    border: none;
+    width: $circle-radius * 7;
+    height: $circle-radius * 7;
+  }
+}
+
+.modal {
+  .modal-card-head {
+    background: $color-primary;
+    border: none;
+    text-transform: uppercase;
+  }
+  .modal-card-title {
+    color: $color-text;
+  }
+  .modal-card-body,
+  .modal-card-foot {
+    background: $color-block-bg;
+    border: none;
+    color: $color-text;
+  }
+  .modal-card-body {
+    p {
+      min-height: 360px;
+      max-height: 360px;
+      padding-right: 1em;
+      padding-bottom: 1em;
+      margin: 1em;
+      margin-right: 0;
+      margin-bottom: 0;
+      overflow: auto;
+      
+      &.is-overflowing {
+        border-bottom: solid 4px $color-accent;
+      }
+    }
+  }
+  .modal-card-foot {
+    button {
+      @extend .is-round;
+      @extend .is-flex;
+      background: $color-primary;
+      color: $color-text;
+      border: none;
+      width: 2.5em;
+      height: 2.5em;
+    }
+  }
+  &.is-active .modal-card {
+    animation: scaleUpBounce .2s ease-in-out;
+  }
+}
+
+// Animation
+@keyframes spin {
+  to {
+    transform: rotate(1turn);
+  }
+}
+
+@keyframes scaleUpBounce {
+  0% {
+    transform: scale(0);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+} 

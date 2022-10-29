@@ -1,0 +1,122 @@
+doctype html
+html 
+  head 
+    link(rel='stylesheet' href='styles/main.css')
+    script(src="/scripts/app.js")
+    style. 
+      p {
+        color: red;
+        text-decoration: underline;
+      }
+  body
+    h1#pageTitle Sean's first Pug attempt
+    p.big-para. 
+      Here is a bunch of text for the big paragraph! 
+    p.big-para. 
+      Another example of stuff. 
+    .display-box 
+    #myOnlyDiv
+    input(type='password' name='inptpasS@' data-js=`${ 5 > 2 ? 'Okay!' : 'Not Okay!' }`)
+
+    - const myStyles = {'color': 'red', 'background-color': 'blue'}
+    div(style=myStyles)
+
+    //- - const myAttributes = {'src': 'myPhoto.png', 'alt': 'This is my photo'}
+    //- img&attributes(myAttributes)
+    
+    p(style='text-align: center; text-transform: uppercase;') This is an HTML file!!!!
+
+
+
+    -
+      const modules = [
+        {
+          title: 'INNOU ID',
+          subtitle: 'Crypto wallet',
+          icon: 'wallet',
+          main: true,
+          description: `Our integrated wallet allows users to directly do in-app transactions. Within the game the collected cryptocurrencies will automatically be stored in the INNOU wallet. Additionally, users can also make purchases at real shops that accept crypto-currencies. The wallet will feature TOP 20 cryptocurrencies to date, including our green coin for building the trees.
+          `,
+        },
+        {
+          title: 'game',
+          icon: 'gamepad',
+          description: `INNOU launches a Crypto Currency use case, where users can playfully gather and earn cryptocurrencies in a GPS map-based game. For businesses using the digital layer we are placing over the real world is a completely new form of marketing, which ultimately leads to more effective and more successful advertisement and marketing campaigns. On the user’s side it offers an innovative gaming experience combined with a revolutionized approach of purchasing.
+          `,
+        },
+        {
+          title: 'channel',
+          icon: 'tv-retro',
+          description: `For providing content and information about the latest crypto technology, sustainable innovation and updates from the ecosystem we launch our own INNOU CHANNEL. Before the INNOU Channel is launched in the INNOU mobile app we will provide streams on web video and social media platforms. Once the mobile app is launched users can send their individually created content and earn money in return. The long-term vision is to become a global media library filled with high quality content.
+          `,
+        },
+        {
+          title: 'freequency',
+          icon: 'broadcast-tower',
+          description: `This module supports every medium that focuses on audio-based content. A variety of channels allows INNOU and its users to upload their own content. Artists can receive direct payment for their work by donations from other users. In addition to that other user’s comments can be rewarded with donations as well. With an ‘on demand’ service INNOU is aiming to provide a wide range of music, free to listen for the community.
+          `,
+        },
+        {
+          title: 'chat',
+          icon: 'comments',
+          description: `For communication within the INNOU ecosystem we will offer an encrypted chat function. Connecting people all over the word, making friends and building up a striving community together is our vision. The chat is integrated in all INNOU modules. It can be used to share game achievements and instant chatting for all purposes. With hashtags and links users can discuss prices, money transfers and any content within the app
+          `,
+        },
+        {
+          title: 'social hub',
+          icon: 'users',
+          description: `For our INNOU Ecosystem to be complete we are building a social platform where users can communicate, connect and share their ideas. Users can choose if they want their profile to be used for casual social media experience or freelancing and promotion or posting and publishing their content. This can be anything from art to blogs, journalistic reports, music and any other mediums of work. To foster intrinsic motivation annual awards for the best publications will be submitted on our platform. Moreover, we will launch our first newspaper, which will be authored solely by members of the INNOU community.
+          `,
+        },
+        {
+          title: 'token',
+          icon: 'coins',
+          description: `INNOU is the newest currency in the crypto market. Its availability will stretch throughout our Pre-ICO and ICO phase. Our purpose is to create opportunities of token utilization in everyday lives and encourage the empowerment of a wide global market. Further details for INNOU Token, Smart Contract and Pre-ICO and ICO formula are stated under the ‘INNOU Token’ chapter.
+          `,
+        },
+      ]
+
+    .map.circle-graphic
+      .layer.ellipses
+        .ellipsis
+        .ellipsis
+        .ellipsis
+        .circle.is-cover
+      .layer
+        .circle.is-second
+      .layer
+        .circle.is-third
+      .layer
+        - let i = 1;
+        each module in modules
+          if(!module.main)
+            .module
+              .circle.node(data-info=module data-index=i++)
+                .subtitle innou
+                h4.title.is-4=module.title
+              .leaf
+      .layer
+        .circle.node.is-main(data-info=modules[0] data-index=0)
+          h2.title.is-2=modules[0].title
+          .subtitle.is-strong=modules[0].subtitle
+          
+    .modal#introModal
+      .modal-background#introModalBackground
+      .modal-card
+        header.modal-card-head
+          .modal-card-title
+            span INNOU 
+            span.is-strong#introModalTitle
+          button.delete#introModalClose(aria-label='close')
+        section.modal-card-body
+          .columns
+            .column
+              p#introModalDescription
+            .column.is-flex
+              i#introModalIcon
+        footer.modal-card-foot.has-content-centered
+          button.button#introModalPrev
+            i.fas.fa-chevron-left
+          button.button#introModalNext
+            i.fas.fa-chevron-right
+
